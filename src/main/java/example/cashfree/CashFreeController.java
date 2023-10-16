@@ -13,6 +13,7 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/cashfree")
 public class CashFreeController {
@@ -45,7 +46,7 @@ public class CashFreeController {
 
     @PostMapping
     private ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
-        CashCard cashCardWithOwner = new CashCard(null, newCashCardRequest.amount());
+        CashCard cashCardWithOwner = new CashCard(null, newCashCardRequest.amount(), "ana");
         CashCard savedCashCard = cashCardRepository.save(cashCardWithOwner);
         URI locationOfNewCashCard = ucb
                 .path("cashcards/{id}")
