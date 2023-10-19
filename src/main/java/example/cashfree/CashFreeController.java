@@ -8,16 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import java.net.URI;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/cashfree")
+@Consumes("application/json;charset=UTF-8")
+@Produces("application/json;charset=UTF-8")
 public class CashFreeController {
-
     private CashCardRepository cashCardRepository;
 
     public CashFreeController(CashCardRepository cashCardRepository) {
@@ -45,6 +47,7 @@ public class CashFreeController {
     }
 
     @PostMapping
+    @Consumes("application/json")
     private ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
         CashCard cashCardWithOwner = new CashCard(null, newCashCardRequest.amount(), "ana");
         CashCard savedCashCard = cashCardRepository.save(cashCardWithOwner);

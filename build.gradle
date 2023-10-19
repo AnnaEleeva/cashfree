@@ -27,6 +27,9 @@ dependencies {
 	// Add the two dependencies below
 	implementation 'org.springframework.data:spring-data-jdbc'
 	implementation 'com.h2database:h2'
+
+	implementation 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
 }
 
 tasks.named('test') {
